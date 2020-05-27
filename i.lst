@@ -1,0 +1,889 @@
+
+
+Microchip Technology PIC PRO Macro Assembler V1.12 build 49521 
+                                                                                               Sun Oct 15 22:40:30 2017
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 49521
+     1                           	processor	16F676
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	idataBANK0,global,class=CODE,delta=2
+     5                           	psect	strings,global,class=STRING,delta=2
+     6                           	psect	nvBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     8                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
+    10                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    11                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+    12                           	psect	maintext,global,class=CODE,split=1,delta=2
+    13                           	psect	text123,local,class=CODE,merge=1,delta=2
+    14                           	psect	text124,local,class=CODE,merge=1,delta=2
+    15                           	psect	text125,local,class=CODE,merge=1,delta=2
+    16                           	psect	text126,local,class=CODE,merge=1,delta=2
+    17                           	psect	text127,local,class=CODE,merge=1,delta=2
+    18                           	psect	text128,local,class=CODE,merge=1,delta=2
+    19                           	psect	text129,local,class=CODE,merge=1,delta=2
+    20                           	psect	text130,local,class=CODE,merge=1,delta=2
+    21                           	psect	pa_nodes,global,class=CODE,delta=2
+    22                           	dabs	1,0x5E,2
+    23  000A                     
+    24                           	psect	idataBANK0
+    25  0383                     __pidataBANK0:	
+    26                           
+    27                           ;initializer for _old_state
+    28  0383  34FF               	retlw	255
+    29                           
+    30                           	psect	strings
+    31  0001                     __pstrings:	
+    32  0001                     stringtab:	
+    33                           ;	global	stringdir,stringtab,__stringbase
+    34                           
+    35  0001                     __stringtab:	
+    36  0001                     stringcode:	
+    37                           ;	String table - string pointers are 1 byte each
+    38                           
+    39  0001                     stringdir:	
+    40  0001  3000               	movlw	high stringdir
+    41  0002  008A               	movwf	10
+    42  0003  0804               	movf	4,w
+    43  0004  0A84               	incf	4,f
+    44  0005  0782               	addwf	2,f
+    45  0006                     __stringbase:	
+    46  0006  3400               	retlw	0
+    47  0007                     __end_of__stringtab:	
+    48  0007                     _array:	
+    49  0007  3400               	retlw	0
+    50  0008  3401               	retlw	1
+    51  0009  3402               	retlw	2
+    52  000A  3403               	retlw	3
+    53  000B  3404               	retlw	4
+    54  000C  3405               	retlw	5
+    55  000D  3406               	retlw	6
+    56  000E  3407               	retlw	7
+    57  000F  3408               	retlw	8
+    58  0010  3409               	retlw	9
+    59  0011                     __end_of_array:	
+    60  0011                     _arrayX:	
+    61  0011  3400               	retlw	0
+    62  0012  3401               	retlw	1
+    63  0013  3402               	retlw	2
+    64  0014  3403               	retlw	3
+    65  0015  3404               	retlw	4
+    66  0016  3405               	retlw	5
+    67  0017  3406               	retlw	6
+    68  0018  3407               	retlw	7
+    69  0019  3408               	retlw	8
+    70  001A  3409               	retlw	9
+    71  001B                     __end_of_arrayX:	
+    72  006E                     _INTEN	set	110
+    73  006F                     _INTFLAG	set	111
+    74  006C                     _ODCON	set	108
+    75  0062                     _OPTION	set	98
+    76  006B                     _PDCON	set	107
+    77  006D                     _PHCON	set	109
+    78  0065                     _TRISA	set	101
+    79  0066                     _TRISB	set	102
+    80                           
+    81                           	psect	nvBANK0
+    82  0026                     __pnvBANK0:	
+    83  0026                     _key_state:	
+    84  0026                     	ds	1
+    85  0008                     _PCON	set	8
+    86  0005                     _PORTA	set	5
+    87  0006                     _PORTB	set	6
+    88  0001                     _TMR0	set	1
+    89  0009                     _WUCON	set	9
+    90  0030                     _RB0	set	48
+    91  0031                     _RB1	set	49
+    92  0032                     _RB2	set	50
+    93                           
+    94                           	psect	cinit
+    95  0384                     start_initialization:	
+    96                           ; #config settings
+    97                           
+    98  0384                     __initialization:	
+    99  0384                     end_of_initialization:	
+   100                           ;End of C runtime variable initialization code
+   101                           
+   102  0384                     __end_of__initialization:	
+   103  0384  0183               	clrf	3
+   104  0385  2BC3               	ljmp	_main	;jump to C main() function
+   105                           
+   106                           	psect	bssBANK0
+   107  0024                     __pbssBANK0:	
+   108  0024                     _rep_state:	
+   109  0024                     	ds	2
+   110                           
+   111                           	psect	dataBANK0
+   112  0027                     __pdataBANK0:	
+   113  0027                     _old_state:	
+   114  0027                     	ds	1
+   115                           
+   116                           	psect	cstackCOMMON
+   117  0000                     __pcstackCOMMON:	
+   118  0000                     ??_Delay_ms:	
+   119  0000                     ??_Init_Io:	
+   120                           ; 0 bytes @ 0x0
+   121                           
+   122  0000                     ??_set_bt_fm:	
+   123                           ; 0 bytes @ 0x0
+   124                           
+   125  0000                     ??_Interrupt_T0:	
+   126                           ; 0 bytes @ 0x0
+   127                           
+   128  0000                     ??_Interrupt_PB:	
+   129                           ; 0 bytes @ 0x0
+   130                           
+   131  0000                     ??_Interrupt_Ex:	
+   132                           ; 0 bytes @ 0x0
+   133                           
+   134  0000                     ??_main:	
+   135                           ; 0 bytes @ 0x0
+   136                           
+   137  0000                     ??___bmul:	
+   138                           ; 0 bytes @ 0x0
+   139                           
+   140                           
+   141                           	psect	cstackBANK0
+   142  0020                     __pcstackBANK0:	
+   143                           ; 0 bytes @ 0x0
+   144                           
+   145  0020                     ?_Delay_ms:	
+   146  0020                     ?_Init_Io:	
+   147                           ; 0 bytes @ 0x0
+   148                           
+   149  0020                     ?_set_bt_fm:	
+   150                           ; 0 bytes @ 0x0
+   151                           
+   152  0020                     ?_Interrupt_T0:	
+   153                           ; 0 bytes @ 0x0
+   154                           
+   155  0020                     ?_Interrupt_PB:	
+   156                           ; 0 bytes @ 0x0
+   157                           
+   158  0020                     ?_Interrupt_Ex:	
+   159                           ; 0 bytes @ 0x0
+   160                           
+   161  0020                     ?_main:	
+   162                           ; 0 bytes @ 0x0
+   163                           
+   164  0020                     ?___bmul:	
+   165                           ; 0 bytes @ 0x0
+   166                           
+   167  0020                     Delay_ms@Cnt:	
+   168                           ; 1 bytes @ 0x0
+   169                           
+   170  0020                     set_bt_fm@n:	
+   171                           ; 1 bytes @ 0x0
+   172                           
+   173  0020                     ___bmul@multiplicand:	
+   174                           ; 1 bytes @ 0x0
+   175                           
+   176                           
+   177                           ; 1 bytes @ 0x0
+   178  0020                     	ds	1
+   179  0021                     ___bmul@product:	
+   180                           
+   181                           ; 1 bytes @ 0x1
+   182  0021                     	ds	1
+   183  0022                     ___bmul@multiplier:	
+   184                           
+   185                           ; 1 bytes @ 0x2
+   186  0022                     	ds	1
+   187  0023                     main@abc:	
+   188                           
+   189                           ; 1 bytes @ 0x3
+   190  0023                     	ds	1
+   191                           
+   192                           	psect	maintext
+   193  03C3                     __pmaintext:	
+   194 ;;
+   195 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   196 ;;
+   197 ;; *************** function _main *****************
+   198 ;; Defined at:
+   199 ;;		line 135 in file "main.c"
+   200 ;; Parameters:    Size  Location     Type
+   201 ;;		None
+   202 ;; Auto vars:     Size  Location     Type
+   203 ;;  abc             1    3[BANK0 ] unsigned char 
+   204 ;; Return value:  Size  Location     Type
+   205 ;;		None               void
+   206 ;; Registers used:
+   207 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   208 ;; Tracked objects:
+   209 ;;		On entry : 17F/0
+   210 ;;		On exit  : 20/0
+   211 ;;		Unchanged: FFE00/0
+   212 ;; Data sizes:     COMMON   BANK0
+   213 ;;      Params:         0       0
+   214 ;;      Locals:         0       1
+   215 ;;      Temps:          0       0
+   216 ;;      Totals:         0       1
+   217 ;;Total ram usage:        1 bytes
+   218 ;; Hardware stack levels required when called:    1
+   219 ;; This function calls:
+   220 ;;		_Init_Io
+   221 ;;		___bmul
+   222 ;;		_Interrupt_T0
+   223 ;;		_Interrupt_PB
+   224 ;;		_Interrupt_Ex
+   225 ;;		_set_bt_fm
+   226 ;;		_Delay_ms
+   227 ;; This function is called by:
+   228 ;;		Startup code after reset
+   229 ;; This function uses a non-reentrant model
+   230 ;;
+   231                           
+   232                           
+   233                           ;psect for function _main
+   234  03C3                     _main:	
+   235                           
+   236                           ;main.c: 138: Init_Io();
+   237                           
+   238                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   239  03C3  23AD               	fcall	_Init_Io
+   240  03C4  30FF               	movlw	255
+   241                           
+   242                           ;main.c: 140: key_state = 0;
+   243  03C5  01A6               	clrf	_key_state
+   244                           
+   245                           ;main.c: 141: old_state = -1;
+   246  03C6  00A7               	movwf	_old_state
+   247  03C7  3001               	movlw	_array-__stringbase
+   248                           
+   249                           ;main.c: 142: rep_state = 0;
+   250  03C8  01A4               	clrf	_rep_state
+   251  03C9  01A5               	clrf	_rep_state+1
+   252                           
+   253                           ;main.c: 144: abc = array[key_state];
+   254  03CA  0084               	movwf	4
+   255  03CB  2001               	fcall	stringdir
+   256  03CC  00A3               	movwf	main@abc
+   257                           
+   258                           ;main.c: 145: abc *= key_state;
+   259  03CD  00A0               	movwf	?___bmul
+   260  03CE  3000               	movlw	0
+   261  03CF  2390               	fcall	___bmul
+   262  03D0  00A3               	movwf	main@abc
+   263                           
+   264                           ;main.c: 146: abc /= 4;
+   265  03D1  1003               	clrc
+   266  03D2  0CA3               	rrf	main@abc,f
+   267  03D3  1003               	clrc
+   268  03D4  0CA3               	rrf	main@abc,f
+   269                           
+   270                           ;main.c: 148: key_state = abc;
+   271  03D5  0823               	movf	main@abc,w
+   272  03D6  00A6               	movwf	_key_state
+   273                           
+   274                           ;main.c: 149: abc = arrayX[key_state];
+   275  03D7  3E0B               	addlw	low (_arrayX-__stringbase)
+   276  03D8  0084               	movwf	4
+   277  03D9  2001               	fcall	stringdir
+   278  03DA  00A3               	movwf	main@abc
+   279                           
+   280                           ;main.c: 150: key_state = abc;
+   281  03DB  00A6               	movwf	_key_state
+   282                           
+   283                           ;main.c: 152: Interrupt_T0();
+   284  03DC  2381               	fcall	_Interrupt_T0
+   285                           
+   286                           ;main.c: 153: Interrupt_PB();
+   287  03DD  2382               	fcall	_Interrupt_PB
+   288                           
+   289                           ;main.c: 154: Interrupt_Ex();
+   290  03DE  2380               	fcall	_Interrupt_Ex
+   291  03DF                     l71:	
+   292                           ;main.c: 156: while(1){
+   293                           
+   294  03DF  0064               	clrwdt	;# 
+   295                           
+   296                           ;main.c: 165: if(RB2){
+   297  03E0  1283               	bcf	3,5	;RP0=0, select bank0
+   298  03E1  1D06               	btfss	6,2	;volatile
+   299  03E2  2BE6               	goto	l724
+   300                           
+   301                           ;main.c: 166: key_state = 1;
+   302  03E3  01A6               	clrf	_key_state
+   303  03E4  0AA6               	incf	_key_state,f
+   304                           
+   305                           ;main.c: 167: }else{
+   306  03E5  2BE7               	goto	l726
+   307  03E6                     l724:	
+   308                           
+   309                           ;main.c: 168: key_state = 0;
+   310  03E6  01A6               	clrf	_key_state
+   311  03E7                     l726:	
+   312                           
+   313                           ;main.c: 169: }
+   314                           ;main.c: 174: if(old_state != key_state){
+   315  03E7  0827               	movf	_old_state,w
+   316  03E8  0626               	xorwf	_key_state,w
+   317  03E9  1903               	skipnz
+   318  03EA  2BF0               	goto	l732
+   319                           
+   320                           ;main.c: 175: old_state = key_state;
+   321  03EB  0826               	movf	_key_state,w
+   322  03EC  00A7               	movwf	_old_state
+   323                           
+   324                           ;main.c: 176: rep_state = 0;
+   325  03ED  01A4               	clrf	_rep_state
+   326  03EE  01A5               	clrf	_rep_state+1
+   327                           
+   328                           ;main.c: 177: }else{
+   329  03EF  2BFC               	goto	l75
+   330  03F0                     l732:	
+   331                           
+   332                           ;main.c: 178: rep_state++;
+   333  03F0  0AA4               	incf	_rep_state,f
+   334  03F1  1903               	skipnz
+   335  03F2  0AA5               	incf	_rep_state+1,f
+   336                           
+   337                           ;main.c: 179: if(rep_state > 32){
+   338  03F3  3000               	movlw	0
+   339  03F4  0225               	subwf	_rep_state+1,w
+   340  03F5  3021               	movlw	33
+   341  03F6  1903               	skipnz
+   342  03F7  0224               	subwf	_rep_state,w
+   343  03F8  1C03               	skipc
+   344  03F9  2BFC               	goto	l75
+   345                           
+   346                           ;main.c: 180: set_bt_fm(key_state);
+   347  03FA  0826               	movf	_key_state,w
+   348  03FB  2386               	fcall	_set_bt_fm
+   349  03FC                     l75:	
+   350                           
+   351                           ;main.c: 181: }
+   352                           ;main.c: 182: }
+   353                           ;main.c: 185: Delay_ms(10);
+   354  03FC  300A               	movlw	10
+   355  03FD  239E               	fcall	_Delay_ms
+   356  03FE  2BDF               	goto	l71
+   357  03FF                     __end_of_main:	
+   358                           
+   359                           	psect	text123
+   360  0382                     __ptext123:	
+   361 ;; *************** function _Interrupt_PB *****************
+   362 ;; Defined at:
+   363 ;;		line 119 in file "main.c"
+   364 ;; Parameters:    Size  Location     Type
+   365 ;;		None
+   366 ;; Auto vars:     Size  Location     Type
+   367 ;;		None
+   368 ;; Return value:  Size  Location     Type
+   369 ;;		None               void
+   370 ;; Registers used:
+   371 ;;		None
+   372 ;; Tracked objects:
+   373 ;;		On entry : 17F/0
+   374 ;;		On exit  : 17F/0
+   375 ;;		Unchanged: FFFFFE80/0
+   376 ;; Data sizes:     COMMON   BANK0
+   377 ;;      Params:         0       0
+   378 ;;      Locals:         0       0
+   379 ;;      Temps:          0       0
+   380 ;;      Totals:         0       0
+   381 ;;Total ram usage:        0 bytes
+   382 ;; Hardware stack levels used:    1
+   383 ;; This function calls:
+   384 ;;		Nothing
+   385 ;; This function is called by:
+   386 ;;		_main
+   387 ;; This function uses a non-reentrant model
+   388 ;;
+   389                           
+   390                           
+   391                           ;psect for function _Interrupt_PB
+   392  0382                     _Interrupt_PB:	
+   393                           
+   394                           ; Regs used in _Interrupt_PB: []
+   395  0382  0008               	return
+   396  0383                     __end_of_Interrupt_PB:	
+   397                           
+   398                           	psect	text124
+   399  039E                     __ptext124:	
+   400 ;; *************** function _Delay_ms *****************
+   401 ;; Defined at:
+   402 ;;		line 33 in file "main.c"
+   403 ;; Parameters:    Size  Location     Type
+   404 ;;  Cnt             1    wreg     unsigned char 
+   405 ;; Auto vars:     Size  Location     Type
+   406 ;;  Cnt             1    0[BANK0 ] unsigned char 
+   407 ;; Return value:  Size  Location     Type
+   408 ;;		None               void
+   409 ;; Registers used:
+   410 ;;		wreg, status,2, status,0
+   411 ;; Tracked objects:
+   412 ;;		On entry : 20/0
+   413 ;;		On exit  : 20/0
+   414 ;;		Unchanged: FFE00/0
+   415 ;; Data sizes:     COMMON   BANK0
+   416 ;;      Params:         0       0
+   417 ;;      Locals:         0       1
+   418 ;;      Temps:          0       0
+   419 ;;      Totals:         0       1
+   420 ;;Total ram usage:        1 bytes
+   421 ;; Hardware stack levels used:    1
+   422 ;; This function calls:
+   423 ;;		Nothing
+   424 ;; This function is called by:
+   425 ;;		_main
+   426 ;; This function uses a non-reentrant model
+   427 ;;
+   428                           
+   429                           
+   430                           ;psect for function _Delay_ms
+   431  039E                     _Delay_ms:	
+   432                           
+   433                           ; Regs used in _Delay_ms: [wreg+status,2+status,0]
+   434                           ;Delay_ms@Cnt stored from wreg
+   435  039E  00A0               	movwf	Delay_ms@Cnt
+   436                           
+   437                           ;main.c: 34: while(Cnt--){
+   438  039F  2BA7               	goto	l652
+   439  03A0                     l48:	
+   440  03A0  0064               	clrwdt	;# 
+   441  03A1                     l648:	
+   442  03A1  30FA               	movlw	250
+   443  03A2  1283               	bcf	3,5	;RP0=0, select bank0
+   444  03A3  0201               	subwf	1,w	;volatile
+   445  03A4  1C03               	skipc
+   446  03A5  2BA0               	goto	l48
+   447                           
+   448                           ;main.c: 38: }
+   449                           ;main.c: 39: TMR0 = 0;
+   450  03A6  0181               	clrf	1	;volatile
+   451  03A7                     l652:	
+   452  03A7  03A0               	decf	Delay_ms@Cnt,f
+   453  03A8  0820               	movf	Delay_ms@Cnt,w
+   454  03A9  3AFF               	xorlw	255
+   455  03AA  1903               	btfsc	3,2
+   456  03AB  0008               	return
+   457  03AC  2BA1               	goto	l648
+   458  03AD                     __end_of_Delay_ms:	
+   459                           
+   460                           	psect	text125
+   461  03AD                     __ptext125:	
+   462 ;; *************** function _Init_Io *****************
+   463 ;; Defined at:
+   464 ;;		line 47 in file "main.c"
+   465 ;; Parameters:    Size  Location     Type
+   466 ;;		None
+   467 ;; Auto vars:     Size  Location     Type
+   468 ;;		None
+   469 ;; Return value:  Size  Location     Type
+   470 ;;		None               void
+   471 ;; Registers used:
+   472 ;;		wreg, status,2
+   473 ;; Tracked objects:
+   474 ;;		On entry : 17F/0
+   475 ;;		On exit  : 17F/0
+   476 ;;		Unchanged: FFE80/0
+   477 ;; Data sizes:     COMMON   BANK0
+   478 ;;      Params:         0       0
+   479 ;;      Locals:         0       0
+   480 ;;      Temps:          0       0
+   481 ;;      Totals:         0       0
+   482 ;;Total ram usage:        0 bytes
+   483 ;; Hardware stack levels used:    1
+   484 ;; This function calls:
+   485 ;;		Nothing
+   486 ;; This function is called by:
+   487 ;;		_main
+   488 ;; This function uses a non-reentrant model
+   489 ;;
+   490                           
+   491                           
+   492                           ;psect for function _Init_Io
+   493  03AD                     _Init_Io:	
+   494                           
+   495                           ;main.c: 51: PORTA = 0;
+   496                           
+   497                           ; Regs used in _Init_Io: [wreg+status,2]
+   498  03AD  0185               	clrf	5	;volatile
+   499                           
+   500                           ;main.c: 53: TRISA = 0;
+   501  03AE  01E5               	clrf	101	;volatile
+   502                           
+   503                           ;main.c: 55: PORTA = 0;
+   504  03AF  0185               	clrf	5	;volatile
+   505                           
+   506                           ;main.c: 60: PORTB = 0;
+   507  03B0  0186               	clrf	6	;volatile
+   508                           
+   509                           ;main.c: 62: TRISB = 0|((1<<2));
+   510  03B1  3004               	movlw	4
+   511  03B2  00E6               	movwf	102	;volatile
+   512                           
+   513                           ;main.c: 64: PORTB = 0;
+   514  03B3  0186               	clrf	6	;volatile
+   515                           
+   516                           ;main.c: 69: PCON = 0xA0;
+   517  03B4  30A0               	movlw	160
+   518  03B5  0088               	movwf	8	;volatile
+   519                           
+   520                           ;main.c: 74: WUCON = 0;
+   521  03B6  0189               	clrf	9	;volatile
+   522                           
+   523                           ;main.c: 76: PDCON = 0xFF;
+   524  03B7  30FF               	movlw	255
+   525  03B8  00EB               	movwf	107	;volatile
+   526                           
+   527                           ;main.c: 78: PHCON = 0xFF & (~(1<<2));
+   528  03B9  30FB               	movlw	251
+   529  03BA  00ED               	movwf	109	;volatile
+   530                           
+   531                           ;main.c: 80: ODCON = 0;
+   532  03BB  01EC               	clrf	108	;volatile
+   533                           
+   534                           ;main.c: 82: INTFLAG = 0;
+   535  03BC  01EF               	clrf	111	;volatile
+   536                           
+   537                           ;main.c: 84: TMR0 = 0;
+   538  03BD  0181               	clrf	1	;volatile
+   539                           
+   540                           ;main.c: 86: INTEN = 0x80;
+   541  03BE  3080               	movlw	128
+   542  03BF  00EE               	movwf	110	;volatile
+   543                           
+   544                           ;main.c: 90: OPTION = 1;
+   545  03C0  3001               	movlw	1
+   546  03C1  00E2               	movwf	98	;volatile
+   547  03C2  0008               	return
+   548  03C3                     __end_of_Init_Io:	
+   549                           
+   550                           	psect	text126
+   551  0381                     __ptext126:	
+   552 ;; *************** function _Interrupt_T0 *****************
+   553 ;; Defined at:
+   554 ;;		line 111 in file "main.c"
+   555 ;; Parameters:    Size  Location     Type
+   556 ;;		None
+   557 ;; Auto vars:     Size  Location     Type
+   558 ;;		None
+   559 ;; Return value:  Size  Location     Type
+   560 ;;		None               void
+   561 ;; Registers used:
+   562 ;;		None
+   563 ;; Tracked objects:
+   564 ;;		On entry : 17F/0
+   565 ;;		On exit  : 17F/0
+   566 ;;		Unchanged: FFFFFE80/0
+   567 ;; Data sizes:     COMMON   BANK0
+   568 ;;      Params:         0       0
+   569 ;;      Locals:         0       0
+   570 ;;      Temps:          0       0
+   571 ;;      Totals:         0       0
+   572 ;;Total ram usage:        0 bytes
+   573 ;; Hardware stack levels used:    1
+   574 ;; This function calls:
+   575 ;;		Nothing
+   576 ;; This function is called by:
+   577 ;;		_main
+   578 ;; This function uses a non-reentrant model
+   579 ;;
+   580                           
+   581                           
+   582                           ;psect for function _Interrupt_T0
+   583  0381                     _Interrupt_T0:	
+   584                           
+   585                           ; Regs used in _Interrupt_T0: []
+   586  0381  0008               	return
+   587  0382                     __end_of_Interrupt_T0:	
+   588                           
+   589                           	psect	text127
+   590  0386                     __ptext127:	
+   591 ;; *************** function _set_bt_fm *****************
+   592 ;; Defined at:
+   593 ;;		line 97 in file "main.c"
+   594 ;; Parameters:    Size  Location     Type
+   595 ;;  n               1    wreg     unsigned char 
+   596 ;; Auto vars:     Size  Location     Type
+   597 ;;  n               1    0[BANK0 ] unsigned char 
+   598 ;; Return value:  Size  Location     Type
+   599 ;;		None               void
+   600 ;; Registers used:
+   601 ;;		wreg
+   602 ;; Tracked objects:
+   603 ;;		On entry : 20/0
+   604 ;;		On exit  : 20/0
+   605 ;;		Unchanged: FFFDF/0
+   606 ;; Data sizes:     COMMON   BANK0
+   607 ;;      Params:         0       0
+   608 ;;      Locals:         0       1
+   609 ;;      Temps:          0       0
+   610 ;;      Totals:         0       1
+   611 ;;Total ram usage:        1 bytes
+   612 ;; Hardware stack levels used:    1
+   613 ;; This function calls:
+   614 ;;		Nothing
+   615 ;; This function is called by:
+   616 ;;		_main
+   617 ;; This function uses a non-reentrant model
+   618 ;;
+   619                           
+   620                           
+   621                           ;psect for function _set_bt_fm
+   622  0386                     _set_bt_fm:	
+   623                           
+   624                           ; Regs used in _set_bt_fm: [wreg]
+   625                           ;set_bt_fm@n stored from wreg
+   626  0386  00A0               	movwf	set_bt_fm@n
+   627                           
+   628                           ;main.c: 98: if(n){
+   629  0387  0820               	movf	set_bt_fm@n,w
+   630  0388  1903               	btfsc	3,2
+   631  0389  2B8D               	goto	l57
+   632                           
+   633                           ;main.c: 99: RB0 = 1;
+   634  038A  1406               	bsf	6,0	;volatile
+   635                           
+   636                           ;main.c: 100: RB1 = 0;
+   637  038B  1086               	bcf	6,1	;volatile
+   638                           
+   639                           ;main.c: 101: }else{
+   640  038C  0008               	return
+   641  038D                     l57:	
+   642                           
+   643                           ;main.c: 102: RB0 = 0;
+   644  038D  1006               	bcf	6,0	;volatile
+   645                           
+   646                           ;main.c: 103: RB1 = 1;
+   647  038E  1486               	bsf	6,1	;volatile
+   648  038F  0008               	return
+   649  0390                     __end_of_set_bt_fm:	
+   650                           
+   651                           	psect	text128
+   652  0380                     __ptext128:	
+   653 ;; *************** function _Interrupt_Ex *****************
+   654 ;; Defined at:
+   655 ;;		line 127 in file "main.c"
+   656 ;; Parameters:    Size  Location     Type
+   657 ;;		None
+   658 ;; Auto vars:     Size  Location     Type
+   659 ;;		None
+   660 ;; Return value:  Size  Location     Type
+   661 ;;		None               void
+   662 ;; Registers used:
+   663 ;;		None
+   664 ;; Tracked objects:
+   665 ;;		On entry : 17F/0
+   666 ;;		On exit  : 17F/0
+   667 ;;		Unchanged: FFFFFE80/0
+   668 ;; Data sizes:     COMMON   BANK0
+   669 ;;      Params:         0       0
+   670 ;;      Locals:         0       0
+   671 ;;      Temps:          0       0
+   672 ;;      Totals:         0       0
+   673 ;;Total ram usage:        0 bytes
+   674 ;; Hardware stack levels used:    1
+   675 ;; This function calls:
+   676 ;;		Nothing
+   677 ;; This function is called by:
+   678 ;;		_main
+   679 ;; This function uses a non-reentrant model
+   680 ;;
+   681                           
+   682                           
+   683                           ;psect for function _Interrupt_Ex
+   684  0380                     _Interrupt_Ex:	
+   685                           
+   686                           ; Regs used in _Interrupt_Ex: []
+   687  0380  0008               	return
+   688  0381                     __end_of_Interrupt_Ex:	
+   689                           
+   690                           	psect	text129
+   691  0390                     __ptext129:	
+   692 ;; *************** function ___bmul *****************
+   693 ;; Defined at:
+   694 ;;		line 3 in file "C:\Program Files (x86)\Microchip\xc8\v1.12\sources\bmul.c"
+   695 ;; Parameters:    Size  Location     Type
+   696 ;;  multiplier      1    wreg     unsigned char 
+   697 ;;  multiplicand    1    0[BANK0 ] unsigned char 
+   698 ;; Auto vars:     Size  Location     Type
+   699 ;;  multiplier      1    2[BANK0 ] unsigned char 
+   700 ;;  product         1    1[BANK0 ] unsigned char 
+   701 ;; Return value:  Size  Location     Type
+   702 ;;                  1    wreg      unsigned char 
+   703 ;; Registers used:
+   704 ;;		wreg, status,2, status,0
+   705 ;; Tracked objects:
+   706 ;;		On entry : 17F/0
+   707 ;;		On exit  : 17F/0
+   708 ;;		Unchanged: FFE80/0
+   709 ;; Data sizes:     COMMON   BANK0
+   710 ;;      Params:         0       1
+   711 ;;      Locals:         0       2
+   712 ;;      Temps:          0       0
+   713 ;;      Totals:         0       3
+   714 ;;Total ram usage:        3 bytes
+   715 ;; Hardware stack levels used:    1
+   716 ;; This function calls:
+   717 ;;		Nothing
+   718 ;; This function is called by:
+   719 ;;		_main
+   720 ;; This function uses a non-reentrant model
+   721 ;;
+   722                           
+   723                           
+   724                           ;psect for function ___bmul
+   725  0390                     ___bmul:	
+   726                           
+   727                           ; Regs used in ___bmul: [wreg+status,2+status,0]
+   728                           ;___bmul@multiplier stored from wreg
+   729  0390  00A2               	movwf	___bmul@multiplier
+   730  0391  01A1               	clrf	___bmul@product
+   731  0392                     l678:	
+   732  0392  0820               	movf	___bmul@multiplicand,w
+   733  0393  1822               	btfsc	___bmul@multiplier,0
+   734  0394  07A1               	addwf	___bmul@product,f
+   735  0395  1003               	clrc
+   736  0396  0DA0               	rlf	___bmul@multiplicand,f
+   737  0397  1003               	clrc
+   738  0398  0CA2               	rrf	___bmul@multiplier,f
+   739  0399  08A2               	movf	___bmul@multiplier,f
+   740  039A  1D03               	skipz
+   741  039B  2B92               	goto	l678
+   742  039C  0821               	movf	___bmul@product,w
+   743  039D  0008               	return
+   744  039E                     __end_of___bmul:	
+   745                           
+   746                           	psect	text130
+   747  0000                     __ptext130:	
+   748                           
+   749                           ;psect for function ___bmul
+   750  005E                     btemp	set	94	;btemp
+   751  005E                     wtemp0	set	94
+
+
+Data Sizes:
+    Strings     0
+    Constant    20
+    Data        1
+    BSS         2
+    Persistent  1
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62      4       8
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->___bmul
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0     207
+                                              3 BANK0      1     1      0
+                            _Init_Io
+                             ___bmul
+                       _Interrupt_T0
+                       _Interrupt_PB
+                       _Interrupt_Ex
+                          _set_bt_fm
+                           _Delay_ms
+ ---------------------------------------------------------------------------------
+ (1) _Interrupt_PB                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Delay_ms                                             1     1      0      22
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _Init_Io                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Interrupt_T0                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _set_bt_fm                                            1     1      0      22
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _Interrupt_Ex                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) ___bmul                                               3     2      1      92
+                                              0 BANK0      3     2      1
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Init_Io
+   ___bmul
+   _Interrupt_T0
+   _Interrupt_PB
+   _Interrupt_Ex
+   _set_bt_fm
+   _Delay_ms
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            0      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       1       2        0.0%
+BITBANK0            3E      0       0       3        0.0%
+BANK0               3E      4       8       4       12.9%
+ABS                  0      0       8       5        0.0%
+DATA                 0      0       9       6        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.12 build 49521 
+Symbol Table                                                                                   Sun Oct 15 22:40:30 2017
+
+                      pc 0002           ___bmul@product 0021                       l71 03DF  
+                     l48 03A0                       l57 038D                       l75 03FC  
+                     fsr 0004                      l652 03A7                      l732 03F0  
+                    l724 03E6                      l726 03E7                      l648 03A1  
+                    l678 0392                      _RB0 0030                      _RB1 0031  
+                    _RB2 0032                      fsr0 0004                     _PCON 0008  
+                   _TMR0 0001                     _main 03C3                     btemp 005E  
+                   start 0000        ___bmul@multiplier 0022          __end_of_Init_Io 03C3  
+                  ?_main 0020                    _ODCON 006C                    _PDCON 006B  
+                  _INTEN 006E                    _PHCON 006D                    _PORTA 0005  
+                  _PORTB 0006                    _TRISA 0065                    _TRISB 0066  
+                  _WUCON 0009                    _array 0007                    pclath 000A  
+                  status 0003                    wtemp0 005E         __end_of_Delay_ms 03AD  
+        __initialization 0384             __end_of_main 03FF                   ??_main 0000  
+                 _OPTION 0062            ?_Interrupt_T0 0020            ?_Interrupt_PB 0020  
+          ?_Interrupt_Ex 0020                ??_Init_Io 0000                   ___bmul 0390  
+                 _arrayX 0011           ??_Interrupt_T0 0000           ??_Interrupt_PB 0000  
+         ??_Interrupt_Ex 0000  __end_of__initialization 0384      ___bmul@multiplicand 0020  
+         __pcstackCOMMON 0000             __pidataBANK0 0383            __end_of_array 0011  
+              ?_Delay_ms 0020               __pbssBANK0 0024               __pmaintext 03C3  
+                ?___bmul 0020       __size_of_set_bt_fm 000A                  _INTFLAG 006F  
+             ??_Delay_ms 0000               __stringtab 0001                  _Init_Io 03AD  
+        __size_of___bmul 000E     __end_of_Interrupt_T0 0382     __end_of_Interrupt_PB 0383  
+   __end_of_Interrupt_Ex 0381                  main@abc 0023     end_of_initialization 0384  
+      __end_of_set_bt_fm 0390           __end_of___bmul 039E           __end_of_arrayX 001B  
+    start_initialization 0384        __size_of_Delay_ms 000F                 ??___bmul 0000  
+  __size_of_Interrupt_T0 0001    __size_of_Interrupt_PB 0001    __size_of_Interrupt_Ex 0001  
+            __pdataBANK0 0027            __pcstackBANK0 0020             _Interrupt_T0 0381  
+           _Interrupt_PB 0382             _Interrupt_Ex 0380                __pnvBANK0 0026  
+               ?_Init_Io 0020                __ptext130 0000                __ptext123 0382  
+              __ptext124 039E                __ptext125 03AD                __ptext126 0381  
+              __ptext127 0386                __ptext128 0380                __ptext129 0390  
+              __pstrings 0001                _key_state 0026               set_bt_fm@n 0020  
+              _old_state 0027                _rep_state 0024                _set_bt_fm 0386  
+            __stringbase 0006                 _Delay_ms 039E         __size_of_Init_Io 0016  
+             ?_set_bt_fm 0020              Delay_ms@Cnt 0020       __end_of__stringtab 0007  
+          __size_of_main 003C                stringcode 0001              ??_set_bt_fm 0000  
+               stringdir 0001                 stringtab 0001  

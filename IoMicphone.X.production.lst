@@ -1,0 +1,1355 @@
+
+
+Microchip Technology PIC PRO Macro Assembler V1.12 build 49521 
+                                                                                               Fri Dec 08 15:22:06 2017
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 49521
+     1                           	processor	16F676
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	nvBANK0,global,class=BANK0,space=1,delta=1
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	maintext,global,class=CODE,split=1,delta=2
+    10                           	psect	text148,local,class=CODE,merge=1,delta=2
+    11                           	psect	text149,local,class=CODE,merge=1,delta=2
+    12                           	psect	text150,local,class=CODE,merge=1,delta=2
+    13                           	psect	text151,local,class=CODE,merge=1,delta=2
+    14                           	psect	text152,local,class=CODE,merge=1,delta=2
+    15                           	psect	text153,local,class=CODE,merge=1,delta=2
+    16                           	psect	text154,local,class=CODE,merge=1,delta=2
+    17                           	psect	text155,local,class=CODE,merge=1,delta=2
+    18                           	psect	text156,local,class=CODE,merge=1,delta=2
+    19                           	psect	text157,local,class=CODE,merge=1,delta=2
+    20                           	psect	pa_nodes,global,class=CODE,delta=2
+    21                           	dabs	1,0x5E,2
+    22  006E                     _INTEN	set	110
+    23  006F                     _INTFLAG	set	111
+    24  006C                     _ODCON	set	108
+    25  0062                     _OPTION	set	98
+    26  006B                     _PDCON	set	107
+    27  006D                     _PHCON	set	109
+    28  0065                     _TRISA	set	101
+    29  0066                     _TRISB	set	102
+    30                           
+    31                           	psect	nvBANK0
+    32  002B                     __pnvBANK0:	
+    33  002B                     _Remain_Sleep:	
+    34  002B                     	ds	1
+    35  0008                     _PCON	set	8
+    36  0005                     _PORTA	set	5
+    37  0006                     _PORTB	set	6
+    38  0001                     _TMR0	set	1
+    39  0009                     _WUCON	set	9
+    40  0030                     _RB0	set	48
+    41  0031                     _RB1	set	49
+    42  0032                     _RB2	set	50
+    43  0033                     _RB3	set	51
+    44  0034                     _RB4	set	52
+    45  0035                     _RB5	set	53
+    46  0047                     _WDTE	set	71
+    47                           
+    48                           	psect	cinit
+    49  02C5                     start_initialization:	
+    50                           ; #config settings
+    51                           
+    52  02C5                     __initialization:	
+    53  02C5                     end_of_initialization:	
+    54                           ;End of C runtime variable initialization code
+    55                           
+    56  02C5                     __end_of__initialization:	
+    57  02C5  0183               	clrf	3
+    58  02C6  2BA4               	ljmp	_main	;jump to C main() function
+    59                           
+    60                           	psect	bssBANK0
+    61  0020                     __pbssBANK0:	
+    62  0020                     _iFlashDelay:	
+    63  0020                     	ds	2
+    64  0022                     _Key_Down_Times:	
+    65  0022                     	ds	1
+    66  0023                     _Mode:	
+    67  0023                     	ds	1
+    68  0024                     _Volume:	
+    69  0024                     	ds	1
+    70  0025                     _iFlashMode:	
+    71  0025                     	ds	1
+    72                           
+    73                           	psect	cstackCOMMON
+    74  0000                     __pcstackCOMMON:	
+    75  0000                     ??_VolSet_1:	
+    76  0000                     ??_VolSet_2:	
+    77                           ; 0 bytes @ 0x0
+    78                           
+    79  0000                     ??_VolSet:	
+    80                           ; 0 bytes @ 0x0
+    81                           
+    82  0000                     ??_Delay_ms:	
+    83                           ; 0 bytes @ 0x0
+    84                           
+    85  0000                     ??_Get_Key:	
+    86                           ; 0 bytes @ 0x0
+    87                           
+    88  0000                     ??_Init_Io:	
+    89                           ; 0 bytes @ 0x0
+    90                           
+    91  0000                     ??_Interrupt_T0:	
+    92                           ; 0 bytes @ 0x0
+    93                           
+    94  0000                     ??_Interrupt_PB:	
+    95                           ; 0 bytes @ 0x0
+    96                           
+    97  0000                     ??_Interrupt_Ex:	
+    98                           ; 0 bytes @ 0x0
+    99                           
+   100  0000                     ??_main:	
+   101                           ; 0 bytes @ 0x0
+   102                           
+   103                           
+   104                           	psect	cstackBANK0
+   105  0026                     __pcstackBANK0:	
+   106                           ; 0 bytes @ 0x0
+   107                           
+   108  0026                     ?_VolSet_1:	
+   109  0026                     ?_VolSet_2:	
+   110                           ; 0 bytes @ 0x0
+   111                           
+   112  0026                     ?_VolSet:	
+   113                           ; 0 bytes @ 0x0
+   114                           
+   115  0026                     ?_Delay_ms:	
+   116                           ; 0 bytes @ 0x0
+   117                           
+   118  0026                     ?_Get_Key:	
+   119                           ; 0 bytes @ 0x0
+   120                           
+   121  0026                     ?_Init_Io:	
+   122                           ; 0 bytes @ 0x0
+   123                           
+   124  0026                     ?_Interrupt_T0:	
+   125                           ; 0 bytes @ 0x0
+   126                           
+   127  0026                     ?_Interrupt_PB:	
+   128                           ; 0 bytes @ 0x0
+   129                           
+   130  0026                     ?_Interrupt_Ex:	
+   131                           ; 0 bytes @ 0x0
+   132                           
+   133  0026                     ?_main:	
+   134                           ; 0 bytes @ 0x0
+   135                           
+   136  0026                     Delay_ms@Cnt:	
+   137                           ; 0 bytes @ 0x0
+   138                           
+   139  0026                     VolSet_1@Dat:	
+   140                           ; 1 bytes @ 0x0
+   141                           
+   142  0026                     VolSet_2@Dat:	
+   143                           ; 2 bytes @ 0x0
+   144                           
+   145                           
+   146                           ; 2 bytes @ 0x0
+   147  0026                     	ds	2
+   148  0028                     VolSet_1@Volume:	
+   149  0028                     VolSet_2@Volume:	
+   150                           ; 1 bytes @ 0x2
+   151                           
+   152                           
+   153                           ; 1 bytes @ 0x2
+   154  0028                     	ds	1
+   155  0029                     VolSet_1@i:	
+   156  0029                     VolSet_2@i:	
+   157                           ; 1 bytes @ 0x3
+   158                           
+   159                           
+   160                           ; 1 bytes @ 0x3
+   161  0029                     	ds	1
+   162  002A                     VolSet@Volume:	
+   163                           
+   164                           ; 1 bytes @ 0x4
+   165  002A                     	ds	1
+   166                           
+   167                           	psect	maintext
+   168  03A4                     __pmaintext:	
+   169 ;;
+   170 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   171 ;;
+   172 ;; *************** function _main *****************
+   173 ;; Defined at:
+   174 ;;		line 356 in file "newmain.c"
+   175 ;; Parameters:    Size  Location     Type
+   176 ;;		None
+   177 ;; Auto vars:     Size  Location     Type
+   178 ;;		None
+   179 ;; Return value:  Size  Location     Type
+   180 ;;		None               void
+   181 ;; Registers used:
+   182 ;;		wreg, status,2, status,0, pclath, cstack
+   183 ;; Tracked objects:
+   184 ;;		On entry : 17F/0
+   185 ;;		On exit  : 20/0
+   186 ;;		Unchanged: FFE00/0
+   187 ;; Data sizes:     COMMON   BANK0
+   188 ;;      Params:         0       0
+   189 ;;      Locals:         0       0
+   190 ;;      Temps:          0       0
+   191 ;;      Totals:         0       0
+   192 ;;Total ram usage:        0 bytes
+   193 ;; Hardware stack levels required when called:    3
+   194 ;; This function calls:
+   195 ;;		_Init_Io
+   196 ;;		_Interrupt_T0
+   197 ;;		_Interrupt_PB
+   198 ;;		_Interrupt_Ex
+   199 ;;		_Get_Key
+   200 ;;		_Delay_ms
+   201 ;; This function is called by:
+   202 ;;		Startup code after reset
+   203 ;; This function uses a non-reentrant model
+   204 ;;
+   205                           
+   206                           
+   207                           ;psect for function _main
+   208  03A4                     _main:	
+   209                           
+   210                           ;newmain.c: 358: Init_Io();
+   211                           
+   212                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   213  03A4  22E9               	fcall	_Init_Io
+   214  03A5  300A               	movlw	10
+   215                           
+   216                           ;newmain.c: 361: iFlashDelay = 0;
+   217  03A6  01A0               	clrf	_iFlashDelay
+   218  03A7  01A1               	clrf	_iFlashDelay+1
+   219                           
+   220                           ;newmain.c: 362: iFlashMode = 0;
+   221  03A8  01A5               	clrf	_iFlashMode
+   222                           
+   223                           ;newmain.c: 363: Remain_Sleep = 10;
+   224  03A9  00AB               	movwf	_Remain_Sleep
+   225                           
+   226                           ;newmain.c: 364: Mode = MODE_OFF;
+   227  03AA  01A3               	clrf	_Mode
+   228                           
+   229                           ;newmain.c: 365: Volume = 0;
+   230  03AB  01A4               	clrf	_Volume
+   231                           
+   232                           ;newmain.c: 368: Interrupt_T0();
+   233  03AC  22C2               	fcall	_Interrupt_T0
+   234                           
+   235                           ;newmain.c: 369: Interrupt_PB();
+   236  03AD  22C3               	fcall	_Interrupt_PB
+   237                           
+   238                           ;newmain.c: 370: Interrupt_Ex();
+   239  03AE  22C4               	fcall	_Interrupt_Ex
+   240                           
+   241                           ;newmain.c: 373: RB4 = 0;;
+   242  03AF  1206               	bcf	6,4	;volatile
+   243                           
+   244                           ;newmain.c: 374: RB0 = 0;;
+   245  03B0  1006               	bcf	6,0	;volatile
+   246  03B1                     l108:	
+   247                           ;newmain.c: 377: while(1){
+   248                           
+   249  03B1  0064               	clrwdt	;# 
+   250                           
+   251                           ;newmain.c: 386: if(Mode == MODE_ON){
+   252  03B2  1283               	bcf	3,5	;RP0=0, select bank0
+   253  03B3  0B23               	decfsz	_Mode,w
+   254  03B4  2BDB               	goto	l959
+   255                           
+   256                           ;newmain.c: 390: if(0 == RB5){
+   257  03B5  1A86               	btfsc	6,5	;volatile
+   258  03B6  2BD8               	goto	l957
+   259                           
+   260                           ;newmain.c: 391: if(iFlashMode < 20){
+   261  03B7  3014               	movlw	20
+   262  03B8  0225               	subwf	_iFlashMode,w
+   263  03B9  1803               	skipnc
+   264  03BA  2BD0               	goto	l947
+   265                           
+   266                           ;newmain.c: 395: if(iFlashDelay++ > 50){
+   267  03BB  0AA0               	incf	_iFlashDelay,f
+   268  03BC  1903               	skipnz
+   269  03BD  0AA1               	incf	_iFlashDelay+1,f
+   270  03BE  3000               	movlw	0
+   271  03BF  0221               	subwf	_iFlashDelay+1,w
+   272  03C0  3034               	movlw	52
+   273  03C1  1903               	skipnz
+   274  03C2  0220               	subwf	_iFlashDelay,w
+   275  03C3  1C03               	skipc
+   276  03C4  2BDB               	goto	l959
+   277                           
+   278                           ;newmain.c: 396: iFlashDelay = 0;
+   279  03C5  01A0               	clrf	_iFlashDelay
+   280  03C6  01A1               	clrf	_iFlashDelay+1
+   281                           
+   282                           ;newmain.c: 398: if(iFlashMode++ & 1){
+   283  03C7  0825               	movf	_iFlashMode,w
+   284  03C8  0AA5               	incf	_iFlashMode,f
+   285  03C9  3901               	andlw	1
+   286  03CA  1903               	btfsc	3,2
+   287  03CB  2BCE               	goto	l113
+   288                           
+   289                           ;newmain.c: 399: RB0 = 1;;
+   290  03CC  1406               	bsf	6,0	;volatile
+   291                           
+   292                           ;newmain.c: 400: }else{
+   293  03CD  2BDB               	goto	l959
+   294  03CE                     l113:	
+   295                           
+   296                           ;newmain.c: 401: RB0 = 0;;
+   297  03CE  1006               	bcf	6,0	;volatile
+   298  03CF  2BDB               	goto	l959
+   299  03D0                     l947:	
+   300  03D0  300A               	movlw	10
+   301                           
+   302                           ;newmain.c: 408: iFlashMode = 0;
+   303  03D1  01A5               	clrf	_iFlashMode
+   304                           
+   305                           ;newmain.c: 409: iFlashDelay = 0;
+   306  03D2  01A0               	clrf	_iFlashDelay
+   307  03D3  01A1               	clrf	_iFlashDelay+1
+   308                           
+   309                           ;newmain.c: 410: Remain_Sleep = 10;
+   310  03D4  00AB               	movwf	_Remain_Sleep
+   311                           
+   312                           ;newmain.c: 411: Mode = MODE_OFF;
+   313  03D5  01A3               	clrf	_Mode
+   314                           
+   315                           ;newmain.c: 412: RB4 = 0;;
+   316  03D6  1206               	bcf	6,4	;volatile
+   317  03D7  2BCE               	goto	l113
+   318  03D8                     l957:	
+   319                           
+   320                           ;newmain.c: 419: else
+   321                           ;newmain.c: 420: {
+   322                           ;newmain.c: 421: iFlashMode = 0;
+   323  03D8  01A5               	clrf	_iFlashMode
+   324                           
+   325                           ;newmain.c: 422: iFlashDelay = 0;
+   326  03D9  01A0               	clrf	_iFlashDelay
+   327  03DA  01A1               	clrf	_iFlashDelay+1
+   328  03DB                     l959:	
+   329                           
+   330                           ;newmain.c: 423: }
+   331                           ;newmain.c: 424: }
+   332                           ;newmain.c: 429: Get_Key();
+   333  03DB  22FF               	fcall	_Get_Key
+   334                           
+   335                           ;newmain.c: 434: if(Mode == MODE_OFF){
+   336  03DC  08A3               	movf	_Mode,f
+   337  03DD  1D03               	skipz
+   338  03DE  2BE3               	goto	l117
+   339                           
+   340                           ;newmain.c: 435: if(Remain_Sleep > 0){
+   341  03DF  082B               	movf	_Remain_Sleep,w
+   342  03E0  1903               	btfsc	3,2
+   343  03E1  2BE3               	goto	l117
+   344                           
+   345                           ;newmain.c: 436: Remain_Sleep --;
+   346  03E2  03AB               	decf	_Remain_Sleep,f
+   347  03E3                     l117:	
+   348                           
+   349                           ;newmain.c: 437: }
+   350                           ;newmain.c: 438: }
+   351                           ;newmain.c: 443: if(0 == Remain_Sleep){
+   352  03E3  08AB               	movf	_Remain_Sleep,f
+   353  03E4  1D03               	skipz
+   354  03E5  2BFC               	goto	l981
+   355                           
+   356                           ;newmain.c: 448: WDTE = 0;;
+   357  03E6  1388               	bcf	8,7	;volatile
+   358  03E7  0064               	clrwdt	;# 
+   359                           
+   360                           ;newmain.c: 454: WUCON = PORTB;
+   361  03E8  1283               	bcf	3,5	;RP0=0, select bank0
+   362  03E9  0806               	movf	6,w	;volatile
+   363  03EA  0089               	movwf	9	;volatile
+   364                           
+   365                           ;newmain.c: 457: WUCON = 0|((1<<3));
+   366  03EB  3008               	movlw	8
+   367  03EC  0089               	movwf	9	;volatile
+   368                           
+   369                           ;newmain.c: 460: INTFLAG = 0;
+   370  03ED  01EF               	clrf	111	;volatile
+   371                           
+   372                           ;newmain.c: 463: INTEN = 0x82;
+   373  03EE  3082               	movlw	130
+   374  03EF  00EE               	movwf	110	;volatile
+   375  03F0  0063               	sleep	;# 
+   376  03F1  0000               	nop	;# 
+   377  03F2  0000               	nop	;# 
+   378  03F3  0000               	nop	;# 
+   379  03F4  0000               	nop	;# 
+   380                           
+   381                           ;newmain.c: 475: INTEN = 0x80;
+   382  03F5  3080               	movlw	128
+   383  03F6  1283               	bcf	3,5	;RP0=0, select bank0
+   384  03F7  00EE               	movwf	110	;volatile
+   385                           
+   386                           ;newmain.c: 478: WUCON = 0x0;
+   387  03F8  0189               	clrf	9	;volatile
+   388                           
+   389                           ;newmain.c: 481: WDTE = 1;;
+   390  03F9  1788               	bsf	8,7	;volatile
+   391                           
+   392                           ;newmain.c: 484: Remain_Sleep = 20;
+   393  03FA  3014               	movlw	20
+   394  03FB  00AB               	movwf	_Remain_Sleep
+   395  03FC                     l981:	
+   396                           
+   397                           ;newmain.c: 485: }
+   398                           ;newmain.c: 488: Delay_ms(10);
+   399  03FC  300A               	movlw	10
+   400  03FD  22C7               	fcall	_Delay_ms
+   401  03FE  2BB1               	goto	l108
+   402  03FF                     __end_of_main:	
+   403                           
+   404                           	psect	text148
+   405  02FF                     __ptext148:	
+   406 ;; *************** function _Get_Key *****************
+   407 ;; Defined at:
+   408 ;;		line 229 in file "newmain.c"
+   409 ;; Parameters:    Size  Location     Type
+   410 ;;		None
+   411 ;; Auto vars:     Size  Location     Type
+   412 ;;		None
+   413 ;; Return value:  Size  Location     Type
+   414 ;;		None               void
+   415 ;; Registers used:
+   416 ;;		wreg, status,2, status,0, pclath, cstack
+   417 ;; Tracked objects:
+   418 ;;		On entry : 20/0
+   419 ;;		On exit  : 20/0
+   420 ;;		Unchanged: FFE00/0
+   421 ;; Data sizes:     COMMON   BANK0
+   422 ;;      Params:         0       0
+   423 ;;      Locals:         0       0
+   424 ;;      Temps:          0       0
+   425 ;;      Totals:         0       0
+   426 ;;Total ram usage:        0 bytes
+   427 ;; Hardware stack levels used:    1
+   428 ;; Hardware stack levels required when called:    2
+   429 ;; This function calls:
+   430 ;;		_VolSet
+   431 ;;		_Delay_ms
+   432 ;;		_VolSet_1
+   433 ;; This function is called by:
+   434 ;;		_main
+   435 ;; This function uses a non-reentrant model
+   436 ;;
+   437                           
+   438                           
+   439                           ;psect for function _Get_Key
+   440  02FF                     _Get_Key:	
+   441                           
+   442                           ;newmain.c: 233: if(RB3){
+   443                           
+   444                           ; Regs used in _Get_Key: [wreg+status,2+status,0+pclath+cstack]
+   445  02FF  1D86               	btfss	6,3	;volatile
+   446  0300  2B12               	goto	l899
+   447                           
+   448                           ;newmain.c: 234: if(Mode == MODE_ON){
+   449  0301  0B23               	decfsz	_Mode,w
+   450  0302  2B10               	goto	l897
+   451                           
+   452                           ;newmain.c: 238: if((Key_Down_Times >= 6) && (Key_Down_Times < 100)){
+   453  0303  3006               	movlw	6
+   454  0304  0222               	subwf	_Key_Down_Times,w
+   455  0305  1C03               	skipc
+   456  0306  2B10               	goto	l897
+   457  0307  3064               	movlw	100
+   458  0308  0222               	subwf	_Key_Down_Times,w
+   459  0309  1803               	skipnc
+   460  030A  2B10               	goto	l897
+   461  030B  3003               	movlw	3
+   462                           
+   463                           ;newmain.c: 239: Volume ++;
+   464  030C  0AA4               	incf	_Volume,f
+   465                           
+   466                           ;newmain.c: 240: Volume &= 3;
+   467  030D  05A4               	andwf	_Volume,f
+   468                           
+   469                           ;newmain.c: 242: VolSet(Volume);
+   470  030E  0824               	movf	_Volume,w
+   471  030F  22D6               	fcall	_VolSet
+   472  0310                     l897:	
+   473                           
+   474                           ;newmain.c: 243: }
+   475                           ;newmain.c: 244: }
+   476                           ;newmain.c: 245: Key_Down_Times = 0;
+   477  0310  01A2               	clrf	_Key_Down_Times
+   478                           
+   479                           ;newmain.c: 246: }
+   480  0311  0008               	return
+   481  0312                     l899:	
+   482                           
+   483                           ;newmain.c: 247: else
+   484                           ;newmain.c: 248: {
+   485                           ;newmain.c: 249: Remain_Sleep = 20;
+   486  0312  3014               	movlw	20
+   487  0313  00AB               	movwf	_Remain_Sleep
+   488                           
+   489                           ;newmain.c: 254: if(Key_Down_Times < 251){
+   490  0314  30FB               	movlw	251
+   491  0315  0222               	subwf	_Key_Down_Times,w
+   492  0316  1C03               	btfss	3,0
+   493                           
+   494                           ;newmain.c: 255: Key_Down_Times ++;
+   495  0317  0AA2               	incf	_Key_Down_Times,f
+   496                           
+   497                           ;newmain.c: 256: }
+   498                           ;newmain.c: 261: if(Key_Down_Times == 100){
+   499  0318  0822               	movf	_Key_Down_Times,w
+   500  0319  3A64               	xorlw	100
+   501  031A  1D03               	skipz
+   502  031B  0008               	return
+   503                           
+   504                           ;newmain.c: 265: if(Mode == MODE_OFF){
+   505  031C  08A3               	movf	_Mode,f
+   506  031D  1D03               	skipz
+   507  031E  2B29               	goto	l911
+   508                           
+   509                           ;newmain.c: 266: Mode = MODE_ON;
+   510  031F  01A3               	clrf	_Mode
+   511  0320  0AA3               	incf	_Mode,f
+   512                           
+   513                           ;newmain.c: 267: RB4 = 1;;
+   514  0321  1606               	bsf	6,4	;volatile
+   515                           
+   516                           ;newmain.c: 268: RB0 = 1;;
+   517  0322  1406               	bsf	6,0	;volatile
+   518                           
+   519                           ;newmain.c: 269: Delay_ms(100);
+   520  0323  3064               	movlw	100
+   521  0324  22C7               	fcall	_Delay_ms
+   522                           
+   523                           ;newmain.c: 270: VolSet(Volume);
+   524  0325  0824               	movf	_Volume,w
+   525  0326  22D6               	fcall	_VolSet
+   526                           
+   527                           ;newmain.c: 271: VolSet_1(0);
+   528  0327  3000               	movlw	0
+   529  0328  2B2D               	ljmp	_VolSet_1
+   530  0329                     l911:	
+   531                           ;newmain.c: 272: }
+   532                           
+   533                           
+   534                           ;newmain.c: 276: else
+   535                           ;newmain.c: 277: {
+   536                           ;newmain.c: 278: Mode = MODE_OFF;
+   537  0329  01A3               	clrf	_Mode
+   538                           
+   539                           ;newmain.c: 279: RB4 = 0;;
+   540  032A  1206               	bcf	6,4	;volatile
+   541                           
+   542                           ;newmain.c: 280: RB0 = 0;;
+   543  032B  1006               	bcf	6,0	;volatile
+   544  032C  0008               	return
+   545  032D                     __end_of_Get_Key:	
+   546                           
+   547                           	psect	text149
+   548  032D                     __ptext149:	
+   549 ;; *************** function _VolSet_1 *****************
+   550 ;; Defined at:
+   551 ;;		line 79 in file "newmain.c"
+   552 ;; Parameters:    Size  Location     Type
+   553 ;;  Volume          1    wreg     unsigned char 
+   554 ;; Auto vars:     Size  Location     Type
+   555 ;;  Volume          1    2[BANK0 ] unsigned char 
+   556 ;;  Dat             2    0[BANK0 ] unsigned int 
+   557 ;;  i               1    3[BANK0 ] unsigned char 
+   558 ;; Return value:  Size  Location     Type
+   559 ;;		None               void
+   560 ;; Registers used:
+   561 ;;		wreg, status,2, status,0
+   562 ;; Tracked objects:
+   563 ;;		On entry : 20/0
+   564 ;;		On exit  : 20/0
+   565 ;;		Unchanged: FFE00/0
+   566 ;; Data sizes:     COMMON   BANK0
+   567 ;;      Params:         0       0
+   568 ;;      Locals:         0       4
+   569 ;;      Temps:          0       0
+   570 ;;      Totals:         0       4
+   571 ;;Total ram usage:        4 bytes
+   572 ;; Hardware stack levels used:    1
+   573 ;; This function calls:
+   574 ;;		Nothing
+   575 ;; This function is called by:
+   576 ;;		_Get_Key
+   577 ;; This function uses a non-reentrant model
+   578 ;;
+   579                           
+   580                           
+   581                           ;psect for function _VolSet_1
+   582  032D                     _VolSet_1:	
+   583                           
+   584                           ; Regs used in _VolSet_1: [wreg+status,2+status,0]
+   585                           ;VolSet_1@Volume stored from wreg
+   586  032D  00A8               	movwf	VolSet_1@Volume
+   587                           
+   588                           ;newmain.c: 80: unsigned int Dat;
+   589                           ;newmain.c: 81: unsigned char i;
+   590                           ;newmain.c: 84: Volume = 87 - Volume;
+   591  032E  3C57               	sublw	87
+   592  032F  00A8               	movwf	VolSet_1@Volume
+   593                           
+   594                           ;newmain.c: 85: i = Volume;
+   595  0330  00A9               	movwf	VolSet_1@i
+   596                           
+   597                           ;newmain.c: 86: i &= 3;
+   598  0331  3003               	movlw	3
+   599  0332  05A9               	andwf	VolSet_1@i,f
+   600                           
+   601                           ;newmain.c: 87: Dat = i;
+   602  0333  0829               	movf	VolSet_1@i,w
+   603  0334  00A6               	movwf	VolSet_1@Dat
+   604  0335  3007               	movlw	7
+   605  0336  01A7               	clrf	VolSet_1@Dat+1
+   606  0337                     u275:	
+   607                           ;newmain.c: 88: Dat <<= 7;
+   608                           
+   609  0337  1003               	clrc
+   610  0338  0DA6               	rlf	VolSet_1@Dat,f
+   611  0339  0DA7               	rlf	VolSet_1@Dat+1,f
+   612  033A  3EFF               	addlw	-1
+   613  033B  1D03               	skipz
+   614  033C  2B37               	goto	u275
+   615                           
+   616                           ;newmain.c: 89: Volume &= 0xfc;
+   617  033D  30FC               	movlw	252
+   618  033E  05A8               	andwf	VolSet_1@Volume,f
+   619                           
+   620                           ;newmain.c: 90: Dat += Volume;
+   621  033F  0828               	movf	VolSet_1@Volume,w
+   622  0340  07A6               	addwf	VolSet_1@Dat,f
+   623  0341  1803               	skipnc
+   624  0342  0AA7               	incf	VolSet_1@Dat+1,f
+   625                           
+   626                           ;newmain.c: 91: Dat |= 0x600;
+   627  0343  3006               	movlw	6
+   628  0344  04A7               	iorwf	VolSet_1@Dat+1,f
+   629                           
+   630                           ;newmain.c: 92: Dat |= 0x2;
+   631  0345  14A6               	bsf	VolSet_1@Dat,1
+   632                           
+   633                           ;newmain.c: 97: RB1 = 0;
+   634  0346  1086               	bcf	6,1	;volatile
+   635                           
+   636                           ;newmain.c: 98: RB2 = 0;
+   637  0347  1106               	bcf	6,2	;volatile
+   638                           
+   639                           ;newmain.c: 101: for (i=0;i<10;i++){
+   640  0348  01A9               	clrf	VolSet_1@i
+   641  0349                     l55:	
+   642                           
+   643                           ;newmain.c: 103: if(Dat & 1){
+   644  0349  1826               	btfsc	VolSet_1@Dat,0
+   645                           
+   646                           ;newmain.c: 104: RB2 = 1;
+   647  034A  1506               	bsf	6,2	;volatile
+   648                           
+   649                           ;newmain.c: 105: }
+   650                           ;newmain.c: 106: RB1 = 1;
+   651  034B  1486               	bsf	6,1	;volatile
+   652  034C  0000               	nop	;# 
+   653  034D  0000               	nop	;# 
+   654  034E  0000               	nop	;# 
+   655                           
+   656                           ;newmain.c: 111: RB2 = 0;
+   657  034F  1283               	bcf	3,5	;RP0=0, select bank0
+   658  0350  1106               	bcf	6,2	;volatile
+   659  0351  0000               	nop	;# 
+   660  0352  0000               	nop	;# 
+   661                           
+   662                           ;newmain.c: 115: RB1 = 0;
+   663  0353  1283               	bcf	3,5	;RP0=0, select bank0
+   664  0354  1086               	bcf	6,1	;volatile
+   665  0355  300A               	movlw	10
+   666                           
+   667                           ;newmain.c: 117: Dat>>=1;
+   668  0356  1003               	clrc
+   669  0357  0CA7               	rrf	VolSet_1@Dat+1,f
+   670  0358  0CA6               	rrf	VolSet_1@Dat,f
+   671  0359  0AA9               	incf	VolSet_1@i,f
+   672  035A  0229               	subwf	VolSet_1@i,w
+   673  035B  1C03               	skipc
+   674  035C  2B49               	goto	l55
+   675                           
+   676                           ;newmain.c: 118: }
+   677                           ;newmain.c: 120: RB2=1;
+   678  035D  1506               	bsf	6,2	;volatile
+   679  035E  0000               	nop	;# 
+   680  035F  0000               	nop	;# 
+   681                           
+   682                           ;newmain.c: 124: RB1=1;
+   683  0360  1283               	bcf	3,5	;RP0=0, select bank0
+   684  0361  1486               	bsf	6,1	;volatile
+   685  0362  0000               	nop	;# 
+   686  0363  0000               	nop	;# 
+   687  0364  0000               	nop	;# 
+   688                           
+   689                           ;newmain.c: 129: RB1=0;
+   690  0365  1283               	bcf	3,5	;RP0=0, select bank0
+   691  0366  1086               	bcf	6,1	;volatile
+   692  0367  0008               	return
+   693  0368                     __end_of_VolSet_1:	
+   694                           
+   695                           	psect	text150
+   696  02D6                     __ptext150:	
+   697 ;; *************** function _VolSet *****************
+   698 ;; Defined at:
+   699 ;;		line 194 in file "newmain.c"
+   700 ;; Parameters:    Size  Location     Type
+   701 ;;  Volume          1    wreg     unsigned char 
+   702 ;; Auto vars:     Size  Location     Type
+   703 ;;  Volume          1    4[BANK0 ] unsigned char 
+   704 ;; Return value:  Size  Location     Type
+   705 ;;		None               void
+   706 ;; Registers used:
+   707 ;;		wreg, status,2, status,0, pclath, cstack
+   708 ;; Tracked objects:
+   709 ;;		On entry : 20/0
+   710 ;;		On exit  : 20/0
+   711 ;;		Unchanged: FFE00/0
+   712 ;; Data sizes:     COMMON   BANK0
+   713 ;;      Params:         0       0
+   714 ;;      Locals:         0       1
+   715 ;;      Temps:          0       0
+   716 ;;      Totals:         0       1
+   717 ;;Total ram usage:        1 bytes
+   718 ;; Hardware stack levels used:    1
+   719 ;; Hardware stack levels required when called:    1
+   720 ;; This function calls:
+   721 ;;		_VolSet_2
+   722 ;; This function is called by:
+   723 ;;		_Get_Key
+   724 ;; This function uses a non-reentrant model
+   725 ;;
+   726                           
+   727                           
+   728                           ;psect for function _VolSet
+   729  02D6                     _VolSet:	
+   730                           
+   731                           ; Regs used in _VolSet: [wreg+status,2+status,0+pclath+cstack]
+   732                           ;VolSet@Volume stored from wreg
+   733  02D6  00AA               	movwf	VolSet@Volume
+   734                           
+   735                           ;newmain.c: 195: if(Volume == 0){
+   736  02D7  08AA               	movf	VolSet@Volume,f
+   737  02D8  1D03               	skipz
+   738  02D9  2ADC               	goto	l871
+   739                           
+   740                           ;newmain.c: 197: Volume = 87;
+   741  02DA  3057               	movlw	87
+   742  02DB  2AE7               	goto	L1
+   743  02DC                     l871:	
+   744                           ;newmain.c: 198: }else if(Volume == 1){
+   745                           
+   746  02DC  0B2A               	decfsz	VolSet@Volume,w
+   747  02DD  2AE0               	goto	l875
+   748                           
+   749                           ;newmain.c: 200: Volume = 15;
+   750  02DE  300F               	movlw	15
+   751  02DF  2AE7               	goto	L1
+   752  02E0                     l875:	
+   753                           ;newmain.c: 201: }else if(Volume == 2){
+   754                           
+   755  02E0  082A               	movf	VolSet@Volume,w
+   756  02E1  3A02               	xorlw	2
+   757  02E2  1D03               	skipz
+   758  02E3  2AE6               	goto	l879
+   759                           
+   760                           ;newmain.c: 203: Volume = 10;
+   761  02E4  300A               	movlw	10
+   762  02E5  2AE7               	goto	L1
+   763  02E6                     l879:	
+   764                           ;newmain.c: 204: }else{
+   765                           
+   766                           
+   767                           ;newmain.c: 206: Volume = 8;
+   768  02E6  3008               	movlw	8
+   769  02E7                     L1:	
+   770  02E7  00AA               	movwf	VolSet@Volume
+   771                           
+   772                           ;newmain.c: 207: }
+   773                           ;newmain.c: 208: VolSet_2(Volume);
+   774  02E8  2B68               	ljmp	_VolSet_2
+   775  02E9                     __end_of_VolSet:	
+   776                           
+   777                           	psect	text151
+   778  02C7                     __ptext151:	
+   779 ;; *************** function _Delay_ms *****************
+   780 ;; Defined at:
+   781 ;;		line 215 in file "newmain.c"
+   782 ;; Parameters:    Size  Location     Type
+   783 ;;  Cnt             1    wreg     unsigned char 
+   784 ;; Auto vars:     Size  Location     Type
+   785 ;;  Cnt             1    0[BANK0 ] unsigned char 
+   786 ;; Return value:  Size  Location     Type
+   787 ;;		None               void
+   788 ;; Registers used:
+   789 ;;		wreg, status,2, status,0
+   790 ;; Tracked objects:
+   791 ;;		On entry : 20/0
+   792 ;;		On exit  : 20/0
+   793 ;;		Unchanged: FFE00/0
+   794 ;; Data sizes:     COMMON   BANK0
+   795 ;;      Params:         0       0
+   796 ;;      Locals:         0       1
+   797 ;;      Temps:          0       0
+   798 ;;      Totals:         0       1
+   799 ;;Total ram usage:        1 bytes
+   800 ;; Hardware stack levels used:    1
+   801 ;; This function calls:
+   802 ;;		Nothing
+   803 ;; This function is called by:
+   804 ;;		_Get_Key
+   805 ;;		_main
+   806 ;; This function uses a non-reentrant model
+   807 ;;
+   808                           
+   809                           
+   810                           ;psect for function _Delay_ms
+   811  02C7                     _Delay_ms:	
+   812                           
+   813                           ; Regs used in _Delay_ms: [wreg+status,2+status,0]
+   814                           ;Delay_ms@Cnt stored from wreg
+   815  02C7  00A6               	movwf	Delay_ms@Cnt
+   816                           
+   817                           ;newmain.c: 216: while(Cnt--){
+   818  02C8  2AD0               	goto	l847
+   819  02C9                     l79:	
+   820  02C9  0064               	clrwdt	;# 
+   821  02CA                     l843:	
+   822  02CA  30FA               	movlw	250
+   823  02CB  1283               	bcf	3,5	;RP0=0, select bank0
+   824  02CC  0201               	subwf	1,w	;volatile
+   825  02CD  1C03               	skipc
+   826  02CE  2AC9               	goto	l79
+   827                           
+   828                           ;newmain.c: 220: }
+   829                           ;newmain.c: 221: TMR0 = 0;
+   830  02CF  0181               	clrf	1	;volatile
+   831  02D0                     l847:	
+   832  02D0  03A6               	decf	Delay_ms@Cnt,f
+   833  02D1  0826               	movf	Delay_ms@Cnt,w
+   834  02D2  3AFF               	xorlw	255
+   835  02D3  1903               	btfsc	3,2
+   836  02D4  0008               	return
+   837  02D5  2ACA               	goto	l843
+   838  02D6                     __end_of_Delay_ms:	
+   839                           
+   840                           	psect	text152
+   841  0368                     __ptext152:	
+   842 ;; *************** function _VolSet_2 *****************
+   843 ;; Defined at:
+   844 ;;		line 136 in file "newmain.c"
+   845 ;; Parameters:    Size  Location     Type
+   846 ;;  Volume          1    wreg     unsigned char 
+   847 ;; Auto vars:     Size  Location     Type
+   848 ;;  Volume          1    2[BANK0 ] unsigned char 
+   849 ;;  Dat             2    0[BANK0 ] unsigned int 
+   850 ;;  i               1    3[BANK0 ] unsigned char 
+   851 ;; Return value:  Size  Location     Type
+   852 ;;		None               void
+   853 ;; Registers used:
+   854 ;;		wreg, status,2, status,0
+   855 ;; Tracked objects:
+   856 ;;		On entry : 20/0
+   857 ;;		On exit  : 20/0
+   858 ;;		Unchanged: FFE00/0
+   859 ;; Data sizes:     COMMON   BANK0
+   860 ;;      Params:         0       0
+   861 ;;      Locals:         0       4
+   862 ;;      Temps:          0       0
+   863 ;;      Totals:         0       4
+   864 ;;Total ram usage:        4 bytes
+   865 ;; Hardware stack levels used:    1
+   866 ;; This function calls:
+   867 ;;		Nothing
+   868 ;; This function is called by:
+   869 ;;		_VolSet
+   870 ;; This function uses a non-reentrant model
+   871 ;;
+   872                           
+   873                           
+   874                           ;psect for function _VolSet_2
+   875  0368                     _VolSet_2:	
+   876                           
+   877                           ; Regs used in _VolSet_2: [wreg+status,2+status,0]
+   878                           ;VolSet_2@Volume stored from wreg
+   879  0368  00A8               	movwf	VolSet_2@Volume
+   880                           
+   881                           ;newmain.c: 137: unsigned int Dat;
+   882                           ;newmain.c: 138: unsigned char i;
+   883                           ;newmain.c: 141: Volume = 87-Volume;
+   884  0369  3C57               	sublw	87
+   885  036A  00A8               	movwf	VolSet_2@Volume
+   886                           
+   887                           ;newmain.c: 142: i = Volume;
+   888  036B  00A9               	movwf	VolSet_2@i
+   889                           
+   890                           ;newmain.c: 143: i &= 3;
+   891  036C  3003               	movlw	3
+   892  036D  05A9               	andwf	VolSet_2@i,f
+   893                           
+   894                           ;newmain.c: 144: Dat = i;
+   895  036E  0829               	movf	VolSet_2@i,w
+   896  036F  00A6               	movwf	VolSet_2@Dat
+   897  0370  3007               	movlw	7
+   898  0371  01A7               	clrf	VolSet_2@Dat+1
+   899  0372                     u305:	
+   900                           ;newmain.c: 145: Dat <<= 7;
+   901                           
+   902  0372  1003               	clrc
+   903  0373  0DA6               	rlf	VolSet_2@Dat,f
+   904  0374  0DA7               	rlf	VolSet_2@Dat+1,f
+   905  0375  3EFF               	addlw	-1
+   906  0376  1D03               	skipz
+   907  0377  2B72               	goto	u305
+   908                           
+   909                           ;newmain.c: 146: Volume&=0xfc;
+   910  0378  30FC               	movlw	252
+   911  0379  05A8               	andwf	VolSet_2@Volume,f
+   912                           
+   913                           ;newmain.c: 147: Dat += Volume;
+   914  037A  0828               	movf	VolSet_2@Volume,w
+   915  037B  07A6               	addwf	VolSet_2@Dat,f
+   916  037C  1803               	skipnc
+   917  037D  0AA7               	incf	VolSet_2@Dat+1,f
+   918                           
+   919                           ;newmain.c: 148: Dat |= 0x600;
+   920  037E  3006               	movlw	6
+   921  037F  04A7               	iorwf	VolSet_2@Dat+1,f
+   922                           
+   923                           ;newmain.c: 149: Dat |= 0x3;
+   924  0380  3003               	movlw	3
+   925  0381  04A6               	iorwf	VolSet_2@Dat,f
+   926                           
+   927                           ;newmain.c: 154: RB1=0;
+   928  0382  1086               	bcf	6,1	;volatile
+   929                           
+   930                           ;newmain.c: 155: RB2=0;
+   931  0383  1106               	bcf	6,2	;volatile
+   932                           
+   933                           ;newmain.c: 158: for (i=0;i<10;i++){
+   934  0384  01A9               	clrf	VolSet_2@i
+   935  0385                     l61:	
+   936                           
+   937                           ;newmain.c: 160: if(Dat & 1){
+   938  0385  1826               	btfsc	VolSet_2@Dat,0
+   939                           
+   940                           ;newmain.c: 161: RB2 = 1;
+   941  0386  1506               	bsf	6,2	;volatile
+   942                           
+   943                           ;newmain.c: 162: }
+   944                           ;newmain.c: 164: RB1=1;
+   945  0387  1486               	bsf	6,1	;volatile
+   946  0388  0000               	nop	;# 
+   947  0389  0000               	nop	;# 
+   948  038A  0000               	nop	;# 
+   949                           
+   950                           ;newmain.c: 169: RB2=0;
+   951  038B  1283               	bcf	3,5	;RP0=0, select bank0
+   952  038C  1106               	bcf	6,2	;volatile
+   953  038D  0000               	nop	;# 
+   954  038E  0000               	nop	;# 
+   955                           
+   956                           ;newmain.c: 173: RB1=0;
+   957  038F  1283               	bcf	3,5	;RP0=0, select bank0
+   958  0390  1086               	bcf	6,1	;volatile
+   959  0391  300A               	movlw	10
+   960                           
+   961                           ;newmain.c: 174: Dat>>=1;
+   962  0392  1003               	clrc
+   963  0393  0CA7               	rrf	VolSet_2@Dat+1,f
+   964  0394  0CA6               	rrf	VolSet_2@Dat,f
+   965  0395  0AA9               	incf	VolSet_2@i,f
+   966  0396  0229               	subwf	VolSet_2@i,w
+   967  0397  1C03               	skipc
+   968  0398  2B85               	goto	l61
+   969                           
+   970                           ;newmain.c: 175: }
+   971                           ;newmain.c: 177: RB2=1;
+   972  0399  1506               	bsf	6,2	;volatile
+   973  039A  0000               	nop	;# 
+   974  039B  0000               	nop	;# 
+   975                           
+   976                           ;newmain.c: 181: RB1=1;
+   977  039C  1283               	bcf	3,5	;RP0=0, select bank0
+   978  039D  1486               	bsf	6,1	;volatile
+   979  039E  0000               	nop	;# 
+   980  039F  0000               	nop	;# 
+   981  03A0  0000               	nop	;# 
+   982                           
+   983                           ;newmain.c: 186: RB1=0;
+   984  03A1  1283               	bcf	3,5	;RP0=0, select bank0
+   985  03A2  1086               	bcf	6,1	;volatile
+   986  03A3  0008               	return
+   987  03A4                     __end_of_VolSet_2:	
+   988                           
+   989                           	psect	text153
+   990  02C4                     __ptext153:	
+   991 ;; *************** function _Interrupt_Ex *****************
+   992 ;; Defined at:
+   993 ;;		line 348 in file "newmain.c"
+   994 ;; Parameters:    Size  Location     Type
+   995 ;;		None
+   996 ;; Auto vars:     Size  Location     Type
+   997 ;;		None
+   998 ;; Return value:  Size  Location     Type
+   999 ;;		None               void
+  1000 ;; Registers used:
+  1001 ;;		None
+  1002 ;; Tracked objects:
+  1003 ;;		On entry : 17F/0
+  1004 ;;		On exit  : 17F/0
+  1005 ;;		Unchanged: FFFFFE80/0
+  1006 ;; Data sizes:     COMMON   BANK0
+  1007 ;;      Params:         0       0
+  1008 ;;      Locals:         0       0
+  1009 ;;      Temps:          0       0
+  1010 ;;      Totals:         0       0
+  1011 ;;Total ram usage:        0 bytes
+  1012 ;; Hardware stack levels used:    1
+  1013 ;; This function calls:
+  1014 ;;		Nothing
+  1015 ;; This function is called by:
+  1016 ;;		_main
+  1017 ;; This function uses a non-reentrant model
+  1018 ;;
+  1019                           
+  1020                           
+  1021                           ;psect for function _Interrupt_Ex
+  1022  02C4                     _Interrupt_Ex:	
+  1023                           
+  1024                           ; Regs used in _Interrupt_Ex: []
+  1025  02C4  0008               	return
+  1026  02C5                     __end_of_Interrupt_Ex:	
+  1027                           
+  1028                           	psect	text154
+  1029  02C3                     __ptext154:	
+  1030 ;; *************** function _Interrupt_PB *****************
+  1031 ;; Defined at:
+  1032 ;;		line 340 in file "newmain.c"
+  1033 ;; Parameters:    Size  Location     Type
+  1034 ;;		None
+  1035 ;; Auto vars:     Size  Location     Type
+  1036 ;;		None
+  1037 ;; Return value:  Size  Location     Type
+  1038 ;;		None               void
+  1039 ;; Registers used:
+  1040 ;;		None
+  1041 ;; Tracked objects:
+  1042 ;;		On entry : 17F/0
+  1043 ;;		On exit  : 17F/0
+  1044 ;;		Unchanged: FFFFFE80/0
+  1045 ;; Data sizes:     COMMON   BANK0
+  1046 ;;      Params:         0       0
+  1047 ;;      Locals:         0       0
+  1048 ;;      Temps:          0       0
+  1049 ;;      Totals:         0       0
+  1050 ;;Total ram usage:        0 bytes
+  1051 ;; Hardware stack levels used:    1
+  1052 ;; This function calls:
+  1053 ;;		Nothing
+  1054 ;; This function is called by:
+  1055 ;;		_main
+  1056 ;; This function uses a non-reentrant model
+  1057 ;;
+  1058                           
+  1059                           
+  1060                           ;psect for function _Interrupt_PB
+  1061  02C3                     _Interrupt_PB:	
+  1062                           
+  1063                           ; Regs used in _Interrupt_PB: []
+  1064  02C3  0008               	return
+  1065  02C4                     __end_of_Interrupt_PB:	
+  1066                           
+  1067                           	psect	text155
+  1068  02E9                     __ptext155:	
+  1069 ;; *************** function _Init_Io *****************
+  1070 ;; Defined at:
+  1071 ;;		line 290 in file "newmain.c"
+  1072 ;; Parameters:    Size  Location     Type
+  1073 ;;		None
+  1074 ;; Auto vars:     Size  Location     Type
+  1075 ;;		None
+  1076 ;; Return value:  Size  Location     Type
+  1077 ;;		None               void
+  1078 ;; Registers used:
+  1079 ;;		wreg, status,2
+  1080 ;; Tracked objects:
+  1081 ;;		On entry : 17F/0
+  1082 ;;		On exit  : 17F/0
+  1083 ;;		Unchanged: FFE80/0
+  1084 ;; Data sizes:     COMMON   BANK0
+  1085 ;;      Params:         0       0
+  1086 ;;      Locals:         0       0
+  1087 ;;      Temps:          0       0
+  1088 ;;      Totals:         0       0
+  1089 ;;Total ram usage:        0 bytes
+  1090 ;; Hardware stack levels used:    1
+  1091 ;; This function calls:
+  1092 ;;		Nothing
+  1093 ;; This function is called by:
+  1094 ;;		_main
+  1095 ;; This function uses a non-reentrant model
+  1096 ;;
+  1097                           
+  1098                           
+  1099                           ;psect for function _Init_Io
+  1100  02E9                     _Init_Io:	
+  1101                           
+  1102                           ;newmain.c: 292: PORTA = 0;
+  1103                           
+  1104                           ; Regs used in _Init_Io: [wreg+status,2]
+  1105  02E9  0185               	clrf	5	;volatile
+  1106                           
+  1107                           ;newmain.c: 294: TRISA = 0;
+  1108  02EA  01E5               	clrf	101	;volatile
+  1109                           
+  1110                           ;newmain.c: 296: PORTA = 0;
+  1111  02EB  0185               	clrf	5	;volatile
+  1112                           
+  1113                           ;newmain.c: 299: PORTB = 0;
+  1114  02EC  0186               	clrf	6	;volatile
+  1115                           
+  1116                           ;newmain.c: 301: TRISB = 0x00|((1<<3))|((1<<5));
+  1117  02ED  3028               	movlw	40
+  1118  02EE  00E6               	movwf	102	;volatile
+  1119                           
+  1120                           ;newmain.c: 303: PORTB = 0;
+  1121  02EF  0186               	clrf	6	;volatile
+  1122                           
+  1123                           ;newmain.c: 306: PCON = 0xA0;
+  1124  02F0  30A0               	movlw	160
+  1125  02F1  0088               	movwf	8	;volatile
+  1126                           
+  1127                           ;newmain.c: 309: WUCON = 0;
+  1128  02F2  0189               	clrf	9	;volatile
+  1129                           
+  1130                           ;newmain.c: 311: PDCON = 0xFF;
+  1131  02F3  30FF               	movlw	255
+  1132  02F4  00EB               	movwf	107	;volatile
+  1133                           
+  1134                           ;newmain.c: 313: PHCON = 0xFF & (~(1<<3)) & (~(1<<5));
+  1135  02F5  30D7               	movlw	215
+  1136  02F6  00ED               	movwf	109	;volatile
+  1137                           
+  1138                           ;newmain.c: 315: ODCON = 0;
+  1139  02F7  01EC               	clrf	108	;volatile
+  1140                           
+  1141                           ;newmain.c: 317: INTFLAG = 0;
+  1142  02F8  01EF               	clrf	111	;volatile
+  1143                           
+  1144                           ;newmain.c: 319: TMR0 = 0;
+  1145  02F9  0181               	clrf	1	;volatile
+  1146                           
+  1147                           ;newmain.c: 321: INTEN = 0x80;
+  1148  02FA  3080               	movlw	128
+  1149  02FB  00EE               	movwf	110	;volatile
+  1150                           
+  1151                           ;newmain.c: 325: OPTION = 1;
+  1152  02FC  3001               	movlw	1
+  1153  02FD  00E2               	movwf	98	;volatile
+  1154  02FE  0008               	return
+  1155  02FF                     __end_of_Init_Io:	
+  1156                           
+  1157                           	psect	text156
+  1158  02C2                     __ptext156:	
+  1159 ;; *************** function _Interrupt_T0 *****************
+  1160 ;; Defined at:
+  1161 ;;		line 332 in file "newmain.c"
+  1162 ;; Parameters:    Size  Location     Type
+  1163 ;;		None
+  1164 ;; Auto vars:     Size  Location     Type
+  1165 ;;		None
+  1166 ;; Return value:  Size  Location     Type
+  1167 ;;		None               void
+  1168 ;; Registers used:
+  1169 ;;		None
+  1170 ;; Tracked objects:
+  1171 ;;		On entry : 17F/0
+  1172 ;;		On exit  : 17F/0
+  1173 ;;		Unchanged: FFFFFE80/0
+  1174 ;; Data sizes:     COMMON   BANK0
+  1175 ;;      Params:         0       0
+  1176 ;;      Locals:         0       0
+  1177 ;;      Temps:          0       0
+  1178 ;;      Totals:         0       0
+  1179 ;;Total ram usage:        0 bytes
+  1180 ;; Hardware stack levels used:    1
+  1181 ;; This function calls:
+  1182 ;;		Nothing
+  1183 ;; This function is called by:
+  1184 ;;		_main
+  1185 ;; This function uses a non-reentrant model
+  1186 ;;
+  1187                           
+  1188                           
+  1189                           ;psect for function _Interrupt_T0
+  1190  02C2                     _Interrupt_T0:	
+  1191                           
+  1192                           ; Regs used in _Interrupt_T0: []
+  1193  02C2  0008               	return
+  1194  02C3                     __end_of_Interrupt_T0:	
+  1195                           
+  1196                           	psect	text157
+  1197  0000                     __ptext157:	
+  1198                           
+  1199                           ;psect for function _Interrupt_T0
+  1200  005E                     btemp	set	94	;btemp
+  1201  005E                     wtemp0	set	94
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         6
+    Persistent  1
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62      5      12
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _Get_Key->_VolSet
+    _VolSet->_VolSet_2
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     468
+                            _Init_Io
+                       _Interrupt_T0
+                       _Interrupt_PB
+                       _Interrupt_Ex
+                            _Get_Key
+                           _Delay_ms
+ ---------------------------------------------------------------------------------
+ (1) _Get_Key                                              0     0      0     446
+                             _VolSet
+                           _Delay_ms
+                           _VolSet_1
+ ---------------------------------------------------------------------------------
+ (2) _VolSet_1                                             4     4      0     166
+                                              0 BANK0      4     4      0
+ ---------------------------------------------------------------------------------
+ (2) _VolSet                                               1     1      0     258
+                                              4 BANK0      1     1      0
+                           _VolSet_2
+ ---------------------------------------------------------------------------------
+ (1) _Delay_ms                                             1     1      0      22
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (3) _VolSet_2                                             4     4      0     166
+                                              0 BANK0      4     4      0
+ ---------------------------------------------------------------------------------
+ (1) _Interrupt_Ex                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Interrupt_PB                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Init_Io                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Interrupt_T0                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Init_Io
+   _Interrupt_T0
+   _Interrupt_PB
+   _Interrupt_Ex
+   _Get_Key
+     _VolSet
+       _VolSet_2
+     _Delay_ms
+     _VolSet_1
+   _Delay_ms
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            0      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       3       2        0.0%
+BITBANK0            3E      0       0       3        0.0%
+BANK0               3E      5       C       4       19.4%
+ABS                  0      0       C       5        0.0%
+DATA                 0      0       F       6        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.12 build 49521 
+Symbol Table                                                                                   Fri Dec 08 15:22:06 2017
+
+                     l61 0385                       l55 0349                       l79 02C9  
+                    l113 03CE                      l108 03B1                      l117 03E3  
+                    l911 0329                      l843 02CA                      l847 02D0  
+                    l871 02DC                      l875 02E0                      l947 03D0  
+                    l981 03FC                      l957 03D8                      l879 02E6  
+                    l959 03DB                      l897 0310                      l899 0312  
+                    _RB0 0030                      _RB1 0031                      _RB2 0032  
+                    _RB3 0033                      _RB4 0034                      _RB5 0035  
+                    u305 0372                      u275 0337                     _PCON 0008  
+                   _TMR0 0001                     _WDTE 0047                     _Mode 0023  
+                   _main 03A4                     btemp 005E                     start 0000  
+        __end_of_Get_Key 032D          __end_of_Init_Io 02FF                    ?_main 0026  
+                  _ODCON 006C                    _PDCON 006B                    _INTEN 006E  
+                  _PHCON 006D                    _PORTA 0005                    _PORTB 0006  
+                  _TRISA 0065                    _TRISB 0066                    _WUCON 0009  
+                  status 0003                    wtemp0 005E         __end_of_Delay_ms 02D6  
+        __initialization 02C5             __end_of_main 03FF                   ??_main 0000  
+       __end_of_VolSet_1 0368         __end_of_VolSet_2 03A4                ??_Get_Key 0000  
+                 _OPTION 0062            ?_Interrupt_T0 0026            ?_Interrupt_PB 0026  
+          ?_Interrupt_Ex 0026                ??_Init_Io 0000                   _VolSet 02D6  
+                 _Volume 0024               _iFlashMode 0025           ??_Interrupt_T0 0000  
+         ??_Interrupt_PB 0000           ??_Interrupt_Ex 0000  __end_of__initialization 02C5  
+         __pcstackCOMMON 0000                ?_Delay_ms 0026               __pbssBANK0 0020  
+             __pmaintext 03A4                  ?_VolSet 0026                ?_VolSet_1 0026  
+              ?_VolSet_2 0026                  _INTFLAG 006F               ??_Delay_ms 0000  
+                _Get_Key 02FF                  _Init_Io 02E9          __size_of_VolSet 0013  
+             ??_VolSet_1 0000               ??_VolSet_2 0000     __end_of_Interrupt_T0 02C3  
+   __end_of_Interrupt_PB 02C4     __end_of_Interrupt_Ex 02C5     end_of_initialization 02C5  
+            _iFlashDelay 0020              VolSet_1@Dat 0026              VolSet_2@Dat 0026  
+         __end_of_VolSet 02E9      start_initialization 02C5        __size_of_Delay_ms 000F  
+               ??_VolSet 0000    __size_of_Interrupt_T0 0001    __size_of_Interrupt_PB 0001  
+  __size_of_Interrupt_Ex 0001        __size_of_VolSet_1 003B        __size_of_VolSet_2 003C  
+              VolSet_1@i 0029                VolSet_2@i 0029            __pcstackBANK0 0026  
+               ?_Get_Key 0026             _Interrupt_T0 02C2             _Interrupt_PB 02C3  
+           _Interrupt_Ex 02C4                __pnvBANK0 002B                 ?_Init_Io 0026  
+              __ptext150 02D6                __ptext151 02C7                __ptext152 0368  
+              __ptext153 02C4                __ptext154 02C3                __ptext155 02E9  
+              __ptext156 02C2                __ptext148 02FF                __ptext157 0000  
+              __ptext149 032D             _Remain_Sleep 002B                 _Delay_ms 02C7  
+       __size_of_Get_Key 002E         __size_of_Init_Io 0016              Delay_ms@Cnt 0026  
+               _VolSet_1 032D                 _VolSet_2 0368           VolSet_1@Volume 0028  
+         VolSet_2@Volume 0028            __size_of_main 005B           _Key_Down_Times 0022  
+           VolSet@Volume 002A  
